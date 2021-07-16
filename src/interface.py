@@ -2,8 +2,10 @@
 
 # Modules
 import os
+import re
 import shutil
 import subprocess
+from rich.text import Text
 from rich.panel import Panel
 from iikp import readchar, keys
 from rich import print as rich_print
@@ -21,6 +23,7 @@ class TextWindow(object):
             self.lines = self.lines[:-1]
 
         # Attributes
+        self._rich_regex = "\\[.[a-z]{2,}]"
         self._cls_cmd = "clear" if os.name != "nt" else "cls"
 
     def _ret_print(self, text: str) -> None:
@@ -52,7 +55,12 @@ class TextWindow(object):
             visible += line + "\n"
             lineidx += 1
 
-        visible = visible[:-1]
+        before = self.text.split(visible)[0]
+        append = ""
+        if before:
+            append = "".join(_ for _ in re.findall(self._rich_regex, before))
+
+        visible = append + visible[:-1]
         if len(visible.split("\n")) < rows:
             visible += "\n" * (rows - len(visible.split("\n")))
 
