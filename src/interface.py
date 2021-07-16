@@ -55,7 +55,7 @@ class TextWindow(object):
             visible += line + "\n"
             lineidx += 1
 
-        before = self.text.split(visible)[0]
+        before = self.text.split(visible)[0] if visible else ""
         append = ""
         if before:
             append = "".join(_ for _ in re.findall(self._rich_regex, before))
