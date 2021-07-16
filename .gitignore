@@ -4,3 +4,6 @@ __pycache__/
 # Hide config
 .vscode/
 config.json
+
+# Hide content
+content/

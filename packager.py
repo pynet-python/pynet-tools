@@ -3,6 +3,7 @@
 # Modules
 import os
 import sys
+import rich
 import shutil
 import zipfile
 from rich import print
@@ -159,7 +160,12 @@ def preview(args: list) -> None:
             text = "<binary file>"
 
         # Show preview
-        tw = TextWindow(text, args[0])
+        try:
+            tw = TextWindow(text, args[0])
+
+        except rich.errors.MarkupError as Error:
+            tw = TextWindow(f"<Formatting Error>\n{Error}", args[0])
+
         if not tw.display():
             break
 
