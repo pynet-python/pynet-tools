@@ -1,0 +1,6 @@
+# Hide cache
+__pycache__/
+
+# Hide config
+.vscode/
+config.json
