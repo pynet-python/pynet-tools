@@ -35,7 +35,7 @@ if not sys.argv or sys.argv and sys.argv[0] == "help":
     ~ [yellow]    init                  | initializes the 'content' folder
     ~ [yellow]    purge                 | deletes all package content
     ~ [yellow]    pack                  | packages the 'content' directory
-    ~ [yellow]    preview [path]        | previews the specified file
+    ~ [yellow]    preview \\[path]        | previews the specified file
     ~ [yellow]    clean                 | cleans up packaging files
     ~
     ~ [bright_black]Copyright 2021 iiPython; MIT License
